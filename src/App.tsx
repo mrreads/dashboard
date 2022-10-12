@@ -1,11 +1,9 @@
-import React from "react";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navigation from "./components/Navigation";
+import Navigation from "@/components/Navigation";
 
-import Home from './views/Home';
-import Clients from './views/Clients';
+import Home from '@/views/Home';
+import Clients from '@/views/Clients';
 
 export default function App() {
   return (
