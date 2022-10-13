@@ -2,8 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navigation from "@/components/Navigation";
 
-import Home from '@/views/Home';
+import Base from '@/views/Base';
 import Clients from '@/views/Clients';
+
+import '@/styles/general.scss';
 
 export default function App() {
   return (
@@ -12,7 +14,7 @@ export default function App() {
         <Navigation />
         <div className="content">
           <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Base />} />
               <Route path="/clients" element={<Clients />} />
           </Routes>
         </div>
