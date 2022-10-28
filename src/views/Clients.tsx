@@ -1,11 +1,18 @@
+import { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@/hooks';
+import { addClient } from '@/store/clientsSlice';
+
+import Client from '@/components/Client';
+
 export default function Clients() {
+    
+    const clients = useAppSelector(state => state.clients)
+    const dispatch = useAppDispatch();
+
     return (
-        <div className="client">
+        <div className="clients">
             <h1 className="title"> Клиенты </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Commodi esse molestias necessitatibus aut adipisci illo nesciunt dolor corrupti quibusdam quasi saepe fugiat sed exercitationem, 
-                quam repellat. Vero, fuga? A, eveniet.
-            </p>
+            { clients.map(client => <Client key={client.id} client={client} />)}
         </div>
     )
 }

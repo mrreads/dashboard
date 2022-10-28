@@ -3,3 +3,9 @@
     grid-template-columns: 250px 250px 250px 250px;
     gap: 25px;
 }
+
+.clients {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px 0;
+}
