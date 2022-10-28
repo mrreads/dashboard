@@ -1,0 +1,33 @@
+.statistic-card {
+    padding: 20px 25px;
+    padding-top: 30px;
+    border-radius: 25px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    &__number {
+        font-family: var(--title-font);
+        color: var(--title-color);
+        font-size: 34px;
+        font-weight: bold;
+
+        & span {
+            font-size: 28px;
+            margin-right: 5px;
+        }
+    }
+    
+    &__text {
+        color: var(--text-color);
+        font-size: 16px;
+
+        margin-top: 5px;
+    }
+
+    position: relative;
+    &__icon {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        height: 32px;
+    }
+}
