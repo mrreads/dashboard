@@ -1,6 +1,6 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 
-import IClient from '@/interfaces/IClient';
+import { IClient } from '@/models/models';
 
 const initialState: IClient[] = [
   { id: nanoid(), firstName: "Иван", lastName: "Иванов", dateJoin: new Date(2022, 11, 28), monthCash: 328 },

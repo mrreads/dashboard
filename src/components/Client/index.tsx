@@ -1,4 +1,4 @@
-import IClient from "@/interfaces/IClient";
+import { IClient } from '@/models/models';
 import './index.scss';
 
 type Props = {

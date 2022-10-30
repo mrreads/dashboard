@@ -1,4 +1,3 @@
-import { JSXElementConstructor } from 'react';
 import './index.scss';
 
 type Props = {

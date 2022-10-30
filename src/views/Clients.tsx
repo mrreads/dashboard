@@ -1,13 +1,9 @@
-import { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/hooks';
-import { addClient } from '@/store/clientsSlice';
-
+import { useAppSelector } from '@/hooks/hooks';
 import Client from '@/components/Client';
 
 export default function Clients() {
     
     const clients = useAppSelector(state => state.clients)
-    const dispatch = useAppDispatch();
 
     return (
         <div className="clients">
