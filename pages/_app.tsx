@@ -1,5 +1,9 @@
+import { Provider } from 'react-redux';
+
 import Layout from '@/layouts/layout';
 import Transition from '@/layouts/transtition';
+
+import { store } from '@/store';
 
 import '@/styles/general.scss';
 
@@ -9,7 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Transition>
-        <Component {...pageProps} />    
+        <Provider store={store}>
+          <Component {...pageProps} />    
+        </Provider>
       </Transition>
     </Layout>
   )
