@@ -2,7 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
 
+export const clientCount = 57;
+
 faker.setLocale('ru');
+
 export interface IClient {
   id: string,
   name: string,
@@ -10,7 +13,7 @@ export interface IClient {
 }
 
 let clients: IClient[] = [];
-for(let i = 0; i <= 50; i++) {
+for(let i = 0; i <= clientCount; i++) {
   let generate: IClient = {
     id: nanoid(),
     name: faker.name.fullName(),
