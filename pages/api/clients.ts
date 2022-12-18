@@ -9,7 +9,12 @@ faker.setLocale('ru');
 export interface IClient {
   id: string,
   name: string,
-  email: string
+  email: string,
+  image: string,
+  phone: string,
+  register: Date,
+  birth: Date,
+  company: string
 }
 
 let clients: IClient[] = [];
@@ -17,7 +22,12 @@ for(let i = 0; i <= clientCount; i++) {
   let generate: IClient = {
     id: nanoid(),
     name: faker.name.fullName(),
-    email: faker.internet.email()
+    email: faker.internet.email(),
+    image: faker.image.avatar(),
+    phone: faker.phone.number('+79##-###-##-##'),
+    register: faker.date.between('2021-06-01T00:00:00.000Z', '2022-11-01T00:00:00.000Z'),
+    birth: faker.date.birthdate(),
+    company: faker.company.bs(),
   };
   clients.push(generate)
 }

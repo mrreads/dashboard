@@ -4,6 +4,14 @@ const nextConfig = {
   env: {
     api: 'http://localhost:3000/api/',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig
