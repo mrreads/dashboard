@@ -7,6 +7,6 @@ html, body, #__next {
 }
 
 #__next {
-    @apply scrollbar scrollbar-thumb-slate-800 scrollbar-track-white scrollbar-thin;
+    @apply scrollbar scrollbar-thumb-slate-800 scrollbar-track-transparent scrollbar-thin;
     overflow-x: hidden;
 }

@@ -1,7 +1,8 @@
-import { nanoid } from 'nanoid'
-const { faker } = require('@faker-js/faker');
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { faker } from '@faker-js/faker';
+import { nanoid } from 'nanoid';
 
+faker.setLocale('ru');
 export interface IClient {
   id: string,
   name: string,

@@ -12,8 +12,8 @@ export default function Navigation({ routes, current }: IProps) {
     {
         routes.map(route => (
             <Link href={route.path} className={`flex gap-5 align-middle px-5 py-3 transition-colors ${current == route.path ? 'bg-slate-700' : ''} hover:bg-slate-700`} key={route.path}>
-                <Image src={`/images/${route.icon}`} width={25} height={25} alt={route.title} />
-                <p className="text-white"> { route.title } </p>
+                <Image className="opacity-90 dark:opacity-80" src={`/images/${route.icon}`} width={25} height={25} alt={route.title} />
+                <p className="text-slate-100 dark:text-slate-200"> { route.title } </p>
             </Link>
         ))
     }
