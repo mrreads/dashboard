@@ -1,6 +1,13 @@
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IClient } from './../pages/api/clients';
+import { IClient } from '@/interfaces/IClient.type';
+
+export interface IResponse {
+  page: number,
+  perPage: number,
+  totalItems: number,
+  totalPages: number,
+  items: IClient[]
+}
 
 // Define a service using a base URL and expected endpoints
 export const clientsApi = createApi({
@@ -8,8 +15,8 @@ export const clientsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.api }),
   endpoints: (builder) => ({
 
-    getAllClients: builder.query<IClient[], void>({
-      query: () => `clients`,
+    getAllClients: builder.query<IResponse, void>({
+      query: () => `api/collections/clients/records`,
     }),
 
   }),

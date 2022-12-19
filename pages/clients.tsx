@@ -6,7 +6,7 @@ import Client from "@/components/client";
 import ClientDetail from "@/components/clientDetail";
 
 import { useGetAllClientsQuery } from "@/services/clients"
-import { IClient } from "@/pages/api/clients";
+import { IClient } from "@/interfaces/IClient.type";
 
 export default function Clients(): JSX.Element {
   const { data, error, isLoading } = useGetAllClientsQuery();
@@ -17,13 +17,13 @@ export default function Clients(): JSX.Element {
   const [filtered, setFiltered] = useState<IClient[] | undefined>([]);
   useEffect(() => {
     if (searchQuery.trim() != '')
-      setFiltered(data?.filter(e => !(e.name.trim().toLowerCase().indexOf(searchQuery.trim().toLowerCase()) < 0 && e.email.trim().toLowerCase().indexOf(searchQuery.trim().toLowerCase()) < 0)));
+      setFiltered(data?.items?.filter(e => !(e.name.trim().toLowerCase().indexOf(searchQuery.trim().toLowerCase()) < 0 && e.email.trim().toLowerCase().indexOf(searchQuery.trim().toLowerCase()) < 0)));
     else
-      setFiltered(data);
+      setFiltered(data?.items);
   }, [data, searchQuery]);
 
   const [selected, setSelected] = useState<string | null>(null);
-
+  
   return (
     <div className="flex gap-5 w-full">
       <div className="flex flex-col gap-5 justify-start max-w-xl w-full">
@@ -41,7 +41,7 @@ export default function Clients(): JSX.Element {
       }
       </div>
 
-      { (selected != null) ? data?.map(client => (client.id == selected) ? <ClientDetail client={client} selected={setSelected} key={client.id} />: null): null}
+      { (selected != null) ? data?.items?.map(client => (client.id == selected) ? <ClientDetail client={client} selected={setSelected} key={client.id} />: null): null}
       
     </div>
   )

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    api: 'http://localhost:3000/api/',
+    api: 'https://api.mrreads.ru/',
   },
   images: {
     remotePatterns: [
