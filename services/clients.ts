@@ -15,8 +15,11 @@ export const clientsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.api }),
   endpoints: (builder) => ({
 
-    getAllClients: builder.query<IResponse, void>({
-      query: () => `api/collections/clients/records`,
+    getAllClients: builder.query<IResponse, number>({
+      query: (page = 1) => `api/collections/clients/records?page=${page}&perPage=15`
+    }),
+    getFilterClients: builder.query<IResponse, string>({
+      query: (param = '') => `api/collections/clients/records?filter=(name~'${param}' || email~'${param}')`
     }),
 
   }),
@@ -24,4 +27,4 @@ export const clientsApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAllClientsQuery } = clientsApi;
+export const { useGetAllClientsQuery, useGetFilterClientsQuery } = clientsApi;

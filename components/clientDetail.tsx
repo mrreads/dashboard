@@ -1,18 +1,22 @@
 import Image from "next/image";
 import { faker } from "@faker-js/faker";
 
-import { IClient } from "@/pages/api/clients"
+import { IClient } from "@/interfaces/IClient.type"
+import { useEffect, useState } from "react";
 
 interface IProps {
     client: IClient,
-    selected: (id: string | null) => void
+    selected: (id: null) => void
 }
 
 export default function ClientDetail({ client, selected }: IProps): JSX.Element {
     const { image, name, email, company, phone, birth, register } = client;
-
+    
     const formatDate = (data: Date): string => new Date(data.toString()).toLocaleString("ru", { year: 'numeric', month: 'numeric', day: 'numeric' });
     
+    const [paragraphs, updateParagraphs] = useState(faker.lorem.paragraphs());
+    useEffect(() => updateParagraphs(faker.lorem.paragraphs()), [client]);
+
     return (
         <div className="sticky top-16 mt-7 border border-slate-200 shadow rounded-md p-7 px-6 w-full h-min dark:bg-slate-700 dark:border-transparent">
             
@@ -42,7 +46,7 @@ export default function ClientDetail({ client, selected }: IProps): JSX.Element 
             <div className="mt-5 h-0.5 w-full bg-slate-100 dark:bg-slate-600 rounded-lg" />
 
             <p className="px-3 pt-5 text-slate-700 dark:text-slate-300">
-                { faker.lorem.paragraphs() }
+                { paragraphs }
             </p>
 
             <div className="mt-5 h-0.5 w-full bg-slate-100 dark:bg-slate-600 rounded-lg" />
