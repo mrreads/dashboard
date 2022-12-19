@@ -1,10 +1,9 @@
 import { ThemeProvider } from 'next-themes';
 import { Provider } from 'react-redux';
+import { store } from '@/store';
 
 import Layout from '@/layouts/layout';
 import Transition from '@/layouts/transtition';
-
-import { store } from '@/store';
 
 import '@/styles/general.scss';
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { IRoute } from "@/layouts/layout";
+
 interface IProps {
     "routes": readonly IRoute[],
     "current": string
