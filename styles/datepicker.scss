@@ -20,7 +20,7 @@
 }
 
 .react-datepicker__current-month {
-    @apply ml-2.5 text-lg font-semibold text-slate-800 dark:text-slate-200
+    @apply ml-2.5 text-lg font-semibold text-slate-800 dark:text-slate-200 capitalize
 }
 
 .react-datepicker__week {
