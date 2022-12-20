@@ -10,3 +10,5 @@ html, body, #__next {
     @apply scrollbar scrollbar-thumb-slate-800 scrollbar-track-transparent scrollbar-thin;
     overflow-x: hidden;
 }
+
+@import '@/styles/datepicker.scss';

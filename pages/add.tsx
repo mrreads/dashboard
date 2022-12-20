@@ -2,8 +2,9 @@ import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'for
 import { object, string, number, date } from 'yup';
 import { faker } from '@faker-js/faker';
 
+import DatePicker from "react-datepicker";
+
 import { IClient } from '@/interfaces/IClient.type';
-import { useEffect, useRef } from 'react';
 
 export default function Add(): JSX.Element {
 
@@ -13,15 +14,15 @@ export default function Add(): JSX.Element {
         email: string().email('Неверный формат').required('Обязательно!'),
         image: string().default(() => faker.image.avatar()).required(),
         phone: string().matches(phoneRegExp, 'Неверный формат!').required('Обязательно!'),
-        register: date().required('Обязательно'),
-        birth: date().default(() => new Date()).required('Обязательно!'),
+        register: date().default(() => new Date()).required('Обязательно'),
+        birth: date().required('Обязательно!'),
         company: string().min(2, 'Коротко!').max(50, 'Много!').required('Обязательно!'),
       });
       
     const initialValues: IClient = {
         name: '',
         email: '',
-        image: '',
+        image: faker.image.avatar(),
         phone: '',
         register: new Date(),
         birth: '',
@@ -53,10 +54,9 @@ export default function Add(): JSX.Element {
            <Field id="email" name="email" placeholder="Почта"  className="mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
 
            <div className='flex gap-4 justify-between'>
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Изображение:</label> 
-                { errors.image && touched.image ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.image}</span>) : null }
+                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Изображение: <span className='opacity-70'> (генерируется автоматически) </span> </label> 
             </div>
-           <Field id="image" name="image" placeholder="Изображение сгенерируется автоматически" disabled className="opacity-80 cursor-not-allowed mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           <Field id="image" name="image" placeholder="Изображение сгенерируется автоматически" disabled className="opacity-30 cursor-not-allowed mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Телефон:</label> 
@@ -68,14 +68,21 @@ export default function Add(): JSX.Element {
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Дата рождения:</label> 
                 { errors.birth && touched.birth ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.birth}</span>) : null }
             </div>
-           <Field id="birth" name="birth" placeholder="Дата рождения"  className="mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           <Field id="birth" name="birth" type="date" placeholder="Дата рождения">
+                {({ field, form: { setFieldValue } }) => (
+                    <DatePicker
+                        popperClassName="react-datepicker-left" nextMonthButtonLabel=">" previousMonthButtonLabel="<"
+                        className="mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        {...field} selected={field.value || null} onChange={(val: any) => setFieldValue(field.name, val)}
+                />)}
+            </Field>
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Компания:</label> 
                 { errors.company && touched.company ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.company}</span>) : null }
             </div>
            <Field id="phone" name="company" placeholder="Телефон"  className="mb-5 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-
+           
            <button type="submit" className="w-auto bg-slate-500 text-slate-100 py-3 rounded-md hover:bg-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">Создать</button>
          
          </Form>
