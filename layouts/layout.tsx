@@ -17,6 +17,7 @@ export interface IRoute {
 const routesList: Readonly<IRoute[]> = [
   { 'title': 'Главная', 'path': '/', 'icon': 'journal.svg'},
   { 'title': 'Клиенты', 'path': '/clients', 'icon': 'users.svg'},
+  { 'title': 'Добавить клиента', 'path': '/add', 'icon': 'users.svg'},
 ]
 
 export default function Layout({ children }: IProps) {

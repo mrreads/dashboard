@@ -12,20 +12,21 @@ export default function Clients(): JSX.Element {
   const [filter, setFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [clients, setClients] = useState<IClient[]>([]);
-  const { data: allClients, isLoading: allClientsLoading } = useGetAllClientsQuery(currentPage);
-  const { data: filterClients, isLoading: filterClientsLoading } = useGetFilterClientsQuery(filter);
+  
+  const { data: allClients, isLoading: allClientsIsLoading } = useGetAllClientsQuery(currentPage);
+  const { data: filterClients, isLoading: filterClientsIsLoading } = useGetFilterClientsQuery(filter);
 
   const loadMoreClients = () => setCurrentPage(currentPage + 1)
-  const allLoaded = (currentPage >= allClients?.totalPages) ? true : false;
+  const allLoaded = (!allClientsIsLoading) ? (currentPage >= allClients!?.totalPages) ? true : false : true;
 
-  useEffect(() => { if (!allClientsLoading) setClients(clients.concat(allClients?.items ?? []))}, [allClientsLoading, allClients]);
+  useEffect(() => { if (!allClientsIsLoading) setClients(clients.concat(allClients?.items ?? []))}, [allClientsIsLoading, allClients]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const handleSearch = (e: { target: any }) => setSearchQuery(e.target.value);
   
   const [filtered, setFiltered] = useState<IClient[] | undefined>([]);
   useEffect(() => setFilter(searchQuery), [searchQuery]);
-  useEffect(() => { if (!filterClientsLoading) setFiltered(filterClients?.items ?? []) }, [filterClientsLoading, filterClients])
+  useEffect(() => { if (!filterClientsIsLoading) setFiltered(filterClients?.items ?? []) }, [filterClientsIsLoading, filterClients])
   
   const [selected, setSelected] = useState<IClient | null>(null);
 
@@ -33,7 +34,7 @@ export default function Clients(): JSX.Element {
     <div className="flex gap-5 w-full">
       <div className="flex flex-col gap-5 justify-start max-w-xl w-full">
 
-      { allClientsLoading || clients.length < 1 ?
+      { allClientsIsLoading || clients.length < 1 ?
         <>
           <Search text="Поиск" placeholder="ФИО или Email" additional="cursor-no-drop" disabled />
           { Array(allClients?.perPage).fill(true).map((_, i) => <ClientLoading key={i} />)}

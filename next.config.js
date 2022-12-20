@@ -5,6 +5,7 @@ const nextConfig = {
     api: 'https://api.mrreads.ru/',
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
