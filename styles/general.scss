@@ -15,10 +15,10 @@ html, body, #__next {
 
 @layer components {
     .custom-input {
-        @apply bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+        @apply bg-slate-100 border border-slate-300 outline-0 text-slate-900 text-sm rounded-lg focus:ring-slate-500 focus:border-slate-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-slate-500;
     }
     .custom-label {
-        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white min-w-max;
     }
 }
 

@@ -56,13 +56,13 @@ export default function Add(): JSX.Element {
 
             <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">ФИО:</label> 
-                { errors.name && touched.name ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.name}</span>) : null }
+                { errors.name && touched.name ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.name}</span>) : null }
             </div>
            <Field id="name" name="name" placeholder="ФИО" className="mb-5 custom-input" />
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">Почта:</label> 
-                { errors.email && touched.email ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.email}</span>) : null }
+                { errors.email && touched.email ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.email}</span>) : null }
             </div>
            <Field id="email" name="email" placeholder="Почта"  className="mb-5 custom-input" />
 
@@ -73,13 +73,13 @@ export default function Add(): JSX.Element {
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">Телефон:</label> 
-                { errors.phone && touched.phone ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.phone}</span>) : null }
+                { errors.phone && touched.phone ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.phone}</span>) : null }
             </div>
            <Field id="phone" name="phone" placeholder="Телефон"  className="mb-5 custom-input" />
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">Дата рождения:</label> 
-                { errors.birth && touched.birth ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.birth}</span>) : null }
+                { errors.birth && touched.birth ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.birth}</span>) : null }
             </div>
            <Field id="birth" name="birth">
                 {({ field, form: { setFieldValue } }) => (
@@ -93,7 +93,7 @@ export default function Add(): JSX.Element {
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">Компания:</label> 
-                { errors.company && touched.company ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.company}</span>) : null }
+                { errors.company && touched.company ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.company}</span>) : null }
             </div>
            <Field id="phone" name="company" placeholder="Компания"  className="mb-5 custom-input" />
            

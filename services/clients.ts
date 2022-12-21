@@ -26,7 +26,7 @@ export const clientsApi = createApi({
   endpoints: (builder) => ({
 
     getAllClients: builder.query<IClientQueryResponse, number>({
-      query: (page = 1) => `api/collections/clients/records?page=${page}&perPage=15&sort=-created,id`
+      query: (page = 1, perPage = 15) => `api/collections/clients/records?page=${page}&perPage=${perPage}&sort=-created,id`
     }),
     getFilterClients: builder.query<IClientQueryResponse, string>({
       query: (param = '') => `api/collections/clients/records?filter=(name~'${param}' || email~'${param}')&sort=-created,id`

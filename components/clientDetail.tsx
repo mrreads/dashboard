@@ -18,7 +18,7 @@ export default function ClientDetail({ client, selected }: IProps): JSX.Element 
     useEffect(() => updateParagraphs(faker.lorem.paragraphs()), [client]);
 
     return (
-        <div className="sticky top-16 mt-7 border border-slate-200 shadow rounded-md p-7 px-6 w-full h-min dark:bg-slate-700 dark:border-transparent">
+        <div className="sticky top-16 mt-7 border border-slate-200 shadow rounded-md p-7 px-6 w-full h-min bg-slate-200 dark:bg-slate-700 dark:border-transparent">
             
             <div className="flex items-start justify-between pb-5 rounded-t dark:border-slate-600">
                 <p className="text-3xl font-semibold text-slate-700 dark:text-slate-300"> Информация о клиенте </p>
