@@ -34,7 +34,7 @@ export default function Add(): JSX.Element {
         image: faker.image.avatar(),
         phone: '',
         register: new Date(),
-        birth: '',
+        birth: new Date(),
         company: '',
     };
 
@@ -44,11 +44,14 @@ export default function Add(): JSX.Element {
             initialValues={initialValues}
             validationSchema={clientSchema}
             onSubmit={async (client) => {
-                let res = await addClient(client);
-                if (res.error) 
+                try {
+                    await addClient(client); 
+                    await clientAdded();
+                }
+                catch
+                {
                     clientError();
-                if (res.data)
-                    clientAdded();
+                }
             }}
        >
         {({ errors, touched }) => (
@@ -79,10 +82,10 @@ export default function Add(): JSX.Element {
 
            <div className='flex gap-4 justify-between'>
                 <label htmlFor="name" className="custom-label">Дата рождения:</label> 
-                { errors.birth && touched.birth ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{errors.birth}</span>) : null }
+                { errors.birth && touched.birth ? (<span className="text-sm text-red-600 dark:text-red-500 truncate">{ (typeof errors.birth == 'string') ? errors.birth : null }</span>) : null }
             </div>
            <Field id="birth" name="birth">
-                {({ field, form: { setFieldValue } }) => (
+                {({ field, form: { setFieldValue } }: FieldProps) => (
                     <DatePicker
                         locale="ru" dateFormat="dd.MM.yyyy"
                         popperClassName="react-datepicker-left" nextMonthButtonLabel=">" previousMonthButtonLabel="<"

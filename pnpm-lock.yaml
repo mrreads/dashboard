@@ -7,12 +7,13 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@types/node': 18.11.17
   '@types/react': 18.0.26
+  '@types/react-datepicker': ^4.8.0
   '@types/react-dom': 18.0.9
   autoprefixer: ^10.4.13
   eslint: 8.30.0
   eslint-config-next: 13.0.7
   formik: ^2.2.9
-  framer-motion: ^7.10.2
+  framer-motion: ^8.0.1
   nanoid: ^4.0.0
   next: 13.0.7
   next-themes: ^0.2.1
@@ -22,7 +23,7 @@ specifiers:
   react-dom: 18.2.0
   react-redux: ^8.0.5
   react-toastify: ^9.1.1
-  sass: ^1.57.0
+  sass: ^1.57.1
   tailwind-scrollbar: ^2.0.1
   tailwindcss: ^3.2.4
   typescript: 4.9.4
@@ -37,9 +38,9 @@ dependencies:
   eslint: 8.30.0
   eslint-config-next: 13.0.7_lzzuuodtsqwxnvqeq4g4likcqa
   formik: 2.2.9_react@18.2.0
-  framer-motion: 7.10.2_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 8.0.1_biqbaboplfbrettd7655fr4n2y
   nanoid: 4.0.0
-  next: 13.0.7_ufbfruihzbho6n4jkpynvghrd4
+  next: 13.0.7_3duxcpitbtplz62feflag7fwby
   next-themes: 0.2.1_gvvct4imq5upoiloat43sswrza
   react: 18.2.0
   react-datepicker: 4.8.0_biqbaboplfbrettd7655fr4n2y
@@ -52,9 +53,10 @@ dependencies:
 devDependencies:
   '@faker-js/faker': 7.6.0
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@types/react-datepicker': 4.8.0_biqbaboplfbrettd7655fr4n2y
   autoprefixer: 10.4.13_postcss@8.4.20
   postcss: 8.4.20
-  sass: 1.57.0
+  sass: 1.57.1
   tailwind-scrollbar: 2.0.1_tailwindcss@3.2.4
   tailwindcss: 3.2.4_postcss@8.4.20
 
@@ -340,7 +342,6 @@ packages:
 
   /@popperjs/core/2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
-    dev: false
 
   /@reduxjs/toolkit/1.9.1_k4ae6lp43ej6mezo3ztvx6pykq:
     resolution: {integrity: sha512-HikrdY+IDgRfRYlCTGUQaiCxxDDgM1mQrRbZ6S1HFZX5ZYuJ4o8EstNmhTwHdPl2rTmLxzwSu0b3AyeyTlR+RA==}
@@ -401,7 +402,18 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: false
+
+  /@types/react-datepicker/4.8.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-20uzZsIf4moPAjjHDfPvH8UaOHZBxrkiQZoLS3wgKq8Xhp+95gdercLEdoA7/I8nR9R5Jz2qQkdMIM+Lq4AS1A==}
+    dependencies:
+      '@popperjs/core': 2.11.6
+      '@types/react': 18.0.26
+      date-fns: 2.29.3
+      react-popper: 2.3.0_r6q5zrenym2zg7je7hgi674bti
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
 
   /@types/react-dom/18.0.9:
     resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
@@ -415,11 +427,9 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
 
   /@types/use-sync-external-store/0.0.3:
     resolution: {integrity: sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==}
@@ -762,7 +772,6 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: false
 
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -771,7 +780,6 @@ packages:
   /date-fns/2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
-    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -1302,8 +1310,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/7.10.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-2OAII9hjpMNz2Nbl2w09uKo7A0bD6xRtGnCZbPzuGGueucWgmSBLjAwzPhXwzCQWMpL3LU8jmXHjxAwIyjslxg==}
+  /framer-motion/8.0.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-rr9Sb97cGM5BWU0jMsmTi9x5w8hF90p6wRUlXto5IFejxMVS8YUxT8Ljjy8RspQKPEGOQUZDIZNvlcLBhs0tMw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -1664,7 +1672,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: false
 
   /js-yaml/4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -1743,7 +1750,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
@@ -1815,12 +1821,12 @@ packages:
       react: '*'
       react-dom: '*'
     dependencies:
-      next: 13.0.7_ufbfruihzbho6n4jkpynvghrd4
+      next: 13.0.7_3duxcpitbtplz62feflag7fwby
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next/13.0.7_ufbfruihzbho6n4jkpynvghrd4:
+  /next/13.0.7_3duxcpitbtplz62feflag7fwby:
     resolution: {integrity: sha512-YfTifqX9vfHm+rSU/H/3xvzOHDkYuMuh4wsvTjiqj9h7qHEF7KHB66X4qrH96Po+ohdid4JY8YVGPziDwdXL0A==}
     engines: {node: '>=14.6.0'}
     hasBin: true
@@ -1844,7 +1850,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      sass: 1.57.0
+      sass: 1.57.1
       styled-jsx: 5.1.0_react@18.2.0
     optionalDependencies:
       '@next/swc-android-arm-eabi': 13.0.7
@@ -2157,7 +2163,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
 
   /react-fast-compare/2.0.4:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
@@ -2165,7 +2170,6 @@ packages:
 
   /react-fast-compare/3.2.0:
     resolution: {integrity: sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==}
-    dev: false
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -2197,7 +2201,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-fast-compare: 3.2.0
       warning: 4.0.3
-    dev: false
 
   /react-redux/8.0.5_yqqa5ithnjtlkxisuaub7c4kpa:
     resolution: {integrity: sha512-Q2f6fCKxPFpkXt1qNRZdEDLlScsDWyrgSj0mliK59qU6W5gvBiKkdMEG2lJzhd1rCctf0hb6EtePPLZ2e0m1uw==}
@@ -2248,7 +2251,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -2344,8 +2346,8 @@ packages:
       is-regex: 1.1.4
     dev: false
 
-  /sass/1.57.0:
-    resolution: {integrity: sha512-IZNEJDTK1cF5B1cGA593TPAV/1S0ysUDxq9XHjX/+SMy0QfUny+nfUsq5ZP7wWSl4eEf7wDJcEZ8ABYFmh3m/w==}
+  /sass/1.57.1:
+    resolution: {integrity: sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -2357,7 +2359,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
@@ -2652,7 +2653,6 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
