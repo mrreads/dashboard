@@ -5,10 +5,17 @@ import { faker } from '@faker-js/faker';
 import DatePicker, { registerLocale } from "react-datepicker";
 import ru from "date-fns/locale/ru";
 
+import { toast } from 'react-toastify';
+
 import { IClient } from '@/interfaces/IClient.type';
+import { useAddClientMutation } from '@/services/clients';
 
 registerLocale("ru", ru);
 export default function Add(): JSX.Element {
+    const [addClient] = useAddClientMutation();
+
+    const clientAdded = () => toast.success("Успешно добавлено!");
+    const clientError = () => toast.error("Ошибка добавления!");
 
     const phoneRegExp = /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
     const clientSchema = object().shape({
@@ -36,8 +43,12 @@ export default function Add(): JSX.Element {
          <Formik
             initialValues={initialValues}
             validationSchema={clientSchema}
-            onSubmit={(values, actions) => {
-                console.log({ values, actions });
+            onSubmit={async (client) => {
+                let res = await addClient(client);
+                if (res.error) 
+                    clientError();
+                if (res.data)
+                    clientAdded();
             }}
        >
         {({ errors, touched }) => (
@@ -84,7 +95,7 @@ export default function Add(): JSX.Element {
                 <label htmlFor="name" className="custom-label">Компания:</label> 
                 { errors.company && touched.company ? (<span className="text-sm text-red-600 dark:text-red-500">{errors.company}</span>) : null }
             </div>
-           <Field id="phone" name="company" placeholder="Телефон"  className="mb-5 custom-input" />
+           <Field id="phone" name="company" placeholder="Компания"  className="mb-5 custom-input" />
            
            <button type="submit" className="w-auto bg-slate-500 text-slate-100 py-3 rounded-md hover:bg-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">Создать</button>
          

@@ -1,12 +1,11 @@
 import Navigation from '@/components/navigation';
 import Head from 'next/head';
 import { NextRouter, useRouter } from 'next/router';
-import {useTheme} from "next-themes";
-import { useEffect } from 'react';
-
+import { useTheme } from "next-themes";
+import { ToastContainer } from 'react-toastify';
 interface IProps {
     'children': React.ReactNode
-}
+} 
 
 export interface IRoute {
   'title': string,
@@ -68,6 +67,7 @@ export default function Layout({ children }: IProps) {
         </main>
       </div>
 
+      <ToastContainer icon={false} theme={currentTheme == 'dark' ? 'dark' : 'light'} position="bottom-right" hideProgressBar={false} newestOnTop={false} closeOnClick />
     </div>
   )
 }

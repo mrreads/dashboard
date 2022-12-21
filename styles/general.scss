@@ -21,3 +21,14 @@ html, body, #__next {
         @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
     }
 }
+
+.Toastify__toast {
+    @apply p-2;
+}
+.Toastify__toast-theme--light {
+    @apply bg-slate-100 text-slate-700;
+}
+
+.Toastify__toast-theme--dark {
+    @apply bg-slate-800 text-slate-300
+}

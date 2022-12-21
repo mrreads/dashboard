@@ -5,6 +5,7 @@ import { store } from '@/store';
 import Layout from '@/layouts/layout';
 import Transition from '@/layouts/transtition';
 
+import 'react-toastify/dist/ReactToastify.min.css';
 import '@/styles/general.scss';
 
 import type { AppProps } from 'next/app'
