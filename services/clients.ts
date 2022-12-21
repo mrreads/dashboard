@@ -23,13 +23,16 @@ export interface IClientMutationResponse extends IClient {
 export const clientsApi = createApi({
   reducerPath: 'clientsApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.api }),
+  tagTypes: ['Client'],
   endpoints: (builder) => ({
 
     getAllClients: builder.query<IClientQueryResponse, number>({
-      query: (page = 1, perPage = 15) => `api/collections/clients/records?page=${page}&perPage=${perPage}&sort=-created,id`
+      query: (page = 1, perPage = 15) => `api/collections/clients/records?page=${page}&perPage=${perPage}&sort=-created,id`,
+      providesTags: ['Client'],
     }),
     getFilterClients: builder.query<IClientQueryResponse, string>({
-      query: (param = '') => `api/collections/clients/records?filter=(name~'${param}' || email~'${param}')&sort=-created,id`
+      query: (param = '') => `api/collections/clients/records?filter=(name~'${param}' || email~'${param}')&sort=-created,id`,
+      providesTags: ['Client'],
     }),
 
     addClient: builder.mutation<IClientMutationResponse, IClient>({
@@ -37,7 +40,8 @@ export const clientsApi = createApi({
         url: 'api/collections/clients/records',
         method: "post",
         body: client
-      })
+      }),
+      invalidatesTags :['Client']
     }),
 
   }),

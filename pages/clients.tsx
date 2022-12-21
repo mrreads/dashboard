@@ -13,8 +13,8 @@ export default function Clients(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const [clients, setClients] = useState<IClient[]>([]);
   
-  const { data: allClients, isLoading: allClientsIsLoading } = useGetAllClientsQuery(currentPage);
-  const { data: filterClients, isLoading: filterClientsIsLoading } = useGetFilterClientsQuery(filter);
+  const { data: allClients, isLoading: allClientsIsLoading } = useGetAllClientsQuery(currentPage, { refetchOnMountOrArgChange: true });
+  const { data: filterClients, isLoading: filterClientsIsLoading } = useGetFilterClientsQuery(filter, { refetchOnMountOrArgChange: true });
 
   const loadMoreClients = () => setCurrentPage(currentPage + 1)
   const allLoaded = (!allClientsIsLoading) ? (currentPage >= allClients!?.totalPages) ? true : false : true;

@@ -1,7 +1,7 @@
 import { useGetAllClientsQuery } from "@/services/clients"
 
 export default function Home(): JSX.Element {
-  const { data: allClients, isLoading: allClientsIsLoading } = useGetAllClientsQuery(0);
+  const { data: allClients, isLoading: allClientsIsLoading } = useGetAllClientsQuery(0, { refetchOnMountOrArgChange: true });
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-3">
